@@ -1,0 +1,13 @@
+{
+  "email_subject": "Urgent: Invoice Attached",
+  "email_body": "Hello, please review the attached invoice. http://malicious.example/attachment",
+  "extracted_urls": [
+    "http://malicious.example/attachment"
+  ],
+  "scan_results": {
+    "http://malicious.example/attachment": {
+      "detections": 5,
+      "category": "malicious"
+    }
+  }
+}
