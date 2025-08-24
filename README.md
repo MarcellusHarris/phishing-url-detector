@@ -12,6 +12,18 @@ This repository hosts an **n8n workflow** that detects malicious or suspicious U
 - Sends a real‑time alert to a Slack channel for high severity detections
 - Modular and extensible for additional actions (e.g. automatic blocklist updates)
 
+## Workflow Diagram
+
+```mermaid
+graph TD
+    Trigger["Webhook/IMAP Email"] --> Extract["Function: Extract URLs"]
+    Extract --> Scan["HTTP: VirusTotal Scan"]
+    Scan --> Categorize["Function: Categorize"]
+    Categorize -->|"Malicious"| Sheets["Google Sheets Log"]
+    Categorize -->|"Malicious"| Slack["Slack Alert"]
+    Categorize -->|"Optional"| BlockList["HTTP: Update Blocklist"]
+```
+
 ## Getting Started
 
 1. Copy `.env.sample` to `.env` and populate it with your API keys and credentials.
